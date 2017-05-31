@@ -105,6 +105,7 @@ class HLSDownloader():
             gproxy=self.proxy
             self.use_proxy_for_chunks=use_proxy_for_chunks
             self.out_stream=out_stream
+            g_stopEvent.clear()
             self.g_stopEvent=g_stopEvent
             self.maxbitrate=maxbitrate
             if '|' in url:
@@ -116,17 +117,12 @@ class HLSDownloader():
                 print 'header recieved now url and headers are',url, clientHeader 
             self.status='init done'
             self.url=url
-            return self.preDownoload()
+            return True# disabled for time being#downloadInternal(self.url,None,self.maxbitrate,self.g_stopEvent, testing=True)
         except: 
             traceback.print_exc()
-            self.status='finished'
+        self.status='finished'
         return False
-        
-    def preDownoload(self):
-        
-        print 'code here'
-        return True
-        
+
     def keep_sending_video(self,dest_stream, segmentToStart=None, totalSegmentToSend=0):
         try:
             self.status='download Starting'
@@ -136,7 +132,7 @@ class HLSDownloader():
         self.status='finished'
 
         
-def getUrl(url,timeout=15,returnres=False):
+def getUrl(url,timeout=15,returnres=False,stream=False):
     global cookieJar
     global clientHeader
     try:
@@ -156,9 +152,9 @@ def getUrl(url,timeout=15,returnres=False):
         #import random
         #headers['User-Agent'] =headers['User-Agent'] + str(int(random.random()*100000))
         if post:
-            req = session.post(url, headers = headers, data= post, proxies=proxies,verify=False,timeout=timeout)
+            req = session.post(url, headers = headers, data= post, proxies=proxies,verify=False,timeout=timeout,stream=stream)
         else:
-            req = session.get(url, headers=headers,proxies=proxies,verify=False ,timeout=timeout)
+            req = session.get(url, headers=headers,proxies=proxies,verify=False ,timeout=timeout,stream=stream)
 
         req.raise_for_status()
         if returnres: 
@@ -221,7 +217,7 @@ def download_chunks(URL, chunk_size=4096, enc=None):
     #conn=urllib2.urlopen(URL)
     #print 'starting download'
     
-    conn=getUrl(URL,timeout=6,returnres=True)
+    conn=getUrl(URL,timeout=6,returnres=True,stream=True)
     #while 1:
     if enc:
         if USEDec==1 :
@@ -453,7 +449,7 @@ def send_back(data,file):
     file.write(data)
     file.flush()
         
-def downloadInternal(url,file,maxbitrate=0,stopEvent=None):
+def downloadInternal(url,file,maxbitrate=0,stopEvent=None, testing=False):
     global key
     global iv
     global USEDec
@@ -463,6 +459,21 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None):
     #dumpfile=open('c:\\temp\\myfile.mp4',"wb")
     variants = []
     variant = None
+     #url check if requires redirect
+    redirurl=url
+    try:
+        print 'going gor  ',url
+        res=getUrl(url,returnres=True )
+        print 'here ', res
+        if res.history: 
+            print 'history'
+            redirurl=res.url
+        res.close()
+        if testing: return True
+    except: traceback.print_exc()
+    print 'redirurl',redirurl
+    
+    
     for line in gen_m3u(url):
         if line.startswith('#EXT'):
             tag, attribs = parse_m3u_tag(line)
@@ -471,8 +482,10 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None):
         elif variant:
             variants.append((line, variant))
             variant = None
+    print 'variants',variants
+    if len(variants)==0: url=redirurl
     if len(variants) == 1:
-        url = urlparse.urljoin(url, variants[0][0])
+        url = urlparse.urljoin(redirurl, variants[0][0])
     elif len(variants) >= 2:
         print "More than one variant of the stream was provided."
 
@@ -503,7 +516,7 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None):
         if choice==-1: choice=0
         #choice = int(raw_input("Selection? "))
         print 'choose %d'%choice
-        url = urlparse.urljoin(url, variants[choice][0])
+        url = urlparse.urljoin(redirurl, variants[choice][0])
 
     #queue = Queue.Queue(1024) # 1024 blocks of 4K each ~ 4MB buffer
     control = ['go']
@@ -513,19 +526,24 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None):
     targetduration = 5
     changed = 0
     glsession=None
-    if ':7777' in url:
-        try:
-            glsession=re.compile(':7777\/.*?m3u8.*?session=(.*?)&').findall(url)[0]
-        except: 
-            pass
+    #if ':7777' in url:
+    #    try:
+    #        glsession=re.compile(':7777\/.*?m3u8.*?session=(.*?)&').findall(url)[0]
+    #    except: 
+    #        pass
 
     try:
         while 1==1:#thread.isAlive():
             if stopEvent and stopEvent.isSet():
                 return
             medialist = list(handle_basic_m3u(url))
+            
+            if testing: 
+                if len(medialist)==0: raise Exception('empty m3u8')
+                return True
             playedSomething=False
-            if medialist==None: return
+            if medialist==None: return False
+            
             if None in medialist:
                 # choose to start playback at the start, since this is a VOD stream
                 pass

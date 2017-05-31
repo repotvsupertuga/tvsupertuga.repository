@@ -1,0 +1,5 @@
+import xbmcaddon
+import base64
+
+MainBase = base64.b64decode ('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FERE9OQkFTRS9hZGRvbnNiYXNlL21hc3Rlci9YTjBaV0pwYmk1amIyMHZjbUYzTDBKYVJIQXpjbXRvMFpXSnBiaTVqYjIwdmNtRjNMMEphUi54bWw=')
+addon = xbmcaddon.Addon('script.module.loganaddon.addon')

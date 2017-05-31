@@ -391,9 +391,10 @@ class TSDownloader():
                         ua_header=True
 
             if not ua_header:
-                req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+                req.add_header('User-Agent','VLC/2.2.2 LibVLC/2.2.17')
+                req.add_header('Icy-MetaData','1')
             #response = urllib2.urlopen(req)
-            if self.proxy and (  (not ischunkDownloading) or self.use_proxy_for_chunks ):
+            if self.proxy:
                 req.set_proxy(self.proxy, 'http')
             response = openner.open(req)
 
@@ -446,6 +447,7 @@ class TSDownloader():
             if self.proxy and len(self.proxy)==0:
                 self.proxy=None
             self.out_stream=out_stream
+            if g_stopEvent: g_stopEvent.clear()
             self.g_stopEvent=g_stopEvent
             if '|' in url:
                 sp = url.split('|')
@@ -456,27 +458,28 @@ class TSDownloader():
             #print 'header recieved now url and headers are',url, self.clientHeader 
             self.status='init done'
             self.url=url
-            #self.downloadInternal(  url)
-            return True
+            return True #disable for time being
+            #return self.downloadInternal(testurl=True)
             
             #os.remove(self.outputfile)
         except: 
             traceback.print_exc()
-            self.status='finished'
+        self.status='finished'
         return False
      
         
     def keep_sending_video(self,dest_stream, segmentToStart=None, totalSegmentToSend=0):
         try:
             self.status='download Starting'
-            self.downloadInternal(self.url,dest_stream)
+            self.downloadInternal(dest_stream=dest_stream)
         except: 
             traceback.print_exc()
         self.status='finished'
+            
 
             
         
-    def downloadInternal(self,url,dest_stream):
+    def downloadInternal(self,dest_stream=None,testurl=False):
         try:
             url=self.url
             fileout=dest_stream
@@ -490,7 +493,7 @@ class TSDownloader():
             fixpid=256
             ignoredblock=None
             sleeptime=0
-            
+            firsttimeurl=False
             while True:
                 if sleeptime>0: 
                     xbmc.sleep(sleeptime)
@@ -504,17 +507,20 @@ class TSDownloader():
                 wrotesomething=False
                 currentduration=0
                 limit=1024*188
+                if testurl: limit=1024
                 lastdataread=limit
                 
                 
                 #print 'starting.............. new url',wrotesomething
                 try:
                     if self.g_stopEvent and self.g_stopEvent.isSet():
-                        return
+                        print 'event set'
+                        return False
                     while (buf != None and len(buf) > 0 and lastdataread>0):
                         
                         if self.g_stopEvent and self.g_stopEvent.isSet():
-                            return
+                            print 'event set'
+                            return False
                         try:
                             
                             buf = response.read(limit)##500 * 1024)
@@ -522,15 +528,26 @@ class TSDownloader():
                             byteread+=lastdataread
                             #print 'got data',len(buf)
                             if lastdataread==0: print 1/0
+                            if testurl: 
+                                print 'test complete true'
+                                response.close()
+                                return True
                         except:
-                            buf=None
                             traceback.print_exc(file=sys.stdout)
+                            print 'testurl',testurl,lost
+                            if testurl and lost>10: 
+                                print 'test complete false'
+                                response.close()
+                                return False
+                            buf=None
+                            
                             lost+=1
-                            #print 'err',lost
-                            if lost>10:
+                            
+                            if lost>10 or firsttimeurl:
                                 fileout.close
                                 return
                             break
+                        firsttimeurl=False
                         writebuf=buf
 
                         if not First:
@@ -597,7 +614,7 @@ class TSDownloader():
                                     else:
                                         #if lastforcurrent==None:
                                         #    print 'NONE ISSUE', buf.encode("hex")
-                                        print 'problembytes','diff',lastpts-lastforcurrent, lastpts, lastforcurrent
+                                        print 'problembytes','diff',lastpts,lastforcurrent, lastpts, lastforcurrent
                                         #buf.encode("hex")
                                         ignoredblock=writebuf
                                         ignorefind+=1#same or old data?
@@ -623,9 +640,10 @@ class TSDownloader():
                         else: 
                             #print 'found first packet', len(writebuf)
                             First=False
-                            if not writebuf[0]=='\x47': 
+                            if not ('\x47' in writebuf[0:20]): 
                                 #fileout.write(buf)
                                 #fileout.flush()
+                                print 'file not TS', repr(writebuf[:100])
                                 fileout.close()
                                 return
                             starttime=time.time()
@@ -706,7 +724,7 @@ class TSDownloader():
                     traceback.print_exc(file=sys.stdout)
                     response.close()
                     fileout.close()
-                    return
+                    return False
                 
 
         except:
