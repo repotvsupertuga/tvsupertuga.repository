@@ -7,13 +7,13 @@
         <datadir zip="true">https://raw.githubusercontent.com/repotvsupertuga/tvsupertuga.repository/instal/</datadir>
         </dir>
         <dir>
+            <info compressed="false">https://fwfwefwegwfsfwq.000webhostapp.com/addons.xml</info>
+            <checksum>https://fwfwefwegwfsfwq.000webhostapp.com/addons.xml.md5</checksum>
+            <datadir zip="true">https://fwfwefwegwfsfwq.000webhostapp.com/instal/</datadir>
+        </dir>
             <info compressed="false">https://raw.githubusercontent.com/PROJECTOTEAM/base/master/baseaddons.repository/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/PROJECTOTEAM/base/master/baseaddons.repository/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/PROJECTOTEAM/base/master/baseaddons.repository/instal/</datadir>
-        </dir>
-        <info compressed="false">https://raw.githubusercontent.com/repotvsupertuga/tvsupertuga.repository/master/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/repotvsupertuga/tvsupertuga.repository/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/repotvsupertuga/tvsupertuga.repository/instal/</datadir>
     </extension>
     <extension point="xbmc.addon.metadata">
 		<summary lang="pt">TVsupertuga repo</summary>
