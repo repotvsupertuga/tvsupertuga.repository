@@ -1,14 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="teamtuga4ever.repository" name="teamtuga4ever repository" version="1.5" provider-name="teamtuga4ever">
-	<extension point="xbmc.addon.repository" name="teamtuga4ever repository">
-		<info compressed="false">https://raw.githubusercontent.com/teamtuga4ever/teamtuga4ever.repository/master/addons.xml</info>
-		<checksum>https://raw.githubusercontent.com/teamtuga4ever/teamtuga4ever.repository/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.githubusercontent.com/teamtuga4ever/teamtuga4ever.repository/master/instal/</datadir>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="teamtuga4ever.repository" name="Teamtuga4ever Repository" version="1.7" provider-name="teamtuga4ever">
+	<extension point="xbmc.addon.repository" name="Teamtuga4ever Repository">
+	<dir>
+		<info compressed="false">https://raw.githubusercontent.com/tugateam/Repository/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/tugateam/Repository/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/tugateam/Repository/master/instal/</datadir>
+	</dir>
+		<info compressed="false">https://sfgreghjtgrfhf.000webhostapp.com/tugateam/addons.xml</info>
+		<checksum>https://sfgreghjtgrfhf.000webhostapp.com/tugateam/addons.xml.md5</checksum>
+		<datadir zip="true">https://sfgreghjtgrfhf.000webhostapp.com/tugateam/instal/master/instal/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Equipe TeamTuga4ever</summary>
-		<description>teamtuga4ever Repository</description>
-		<disclaimer></disclaimer>
+		<summary>teamtuga4ever</summary>
+		<description>Teamtuga4ever Repository</description>
+         <disclaimer>Teamtuga4ever</disclaimer>
 		<platform>all</platform>
+                <website>https://www.facebook.com/groups/teamtuga4ever/</website>
 	</extension>
 </addon>
+
