@@ -183,7 +183,7 @@ class NoRedirection(urllib2.HTTPErrorProcessor):
        return response
    https_response = http_response
 addon = xbmcaddon.Addon('plugin.video.amerikano')
-Q1RWQmFzZQ0K = base64.b64decode('aHR0cDovL3Bhc3RlYmluLmNvbS9yYXcvNkRiNFVQRWE=')
+Q1RWQmFzZQ0K = base64.b64decode('aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L01mNmRMRFJz')
 class NoRedirection(urllib2.HTTPErrorProcessor):
    def http_response(self, request, response):
        return response
