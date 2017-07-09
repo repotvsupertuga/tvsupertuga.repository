@@ -195,6 +195,36 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.elysium" version="2017.06.10" name="Elysium" provider-name="Elysium">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.elysium.artwork"/>
+		<import addon="script.module.urlresolver"/>
+		<import addon="script.module.metahandler"/>
+		<import addon="script.module.requests"/>
+		<import addon="script.module.beautifulsoup"/>
+		<import addon="script.module.schism.common"/>
+		<import addon="script.module.futures"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="elysium.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Elysium movies and TV shows</summary>
+		<description lang="en">Watch movies and TV shows in high quality! Please note that this addon is not an official part of the Kodi media player, and therefore not to be mentioned within official support channels. This addon has nothing to do with the media player itself, nor itâ€™s intended use, it is simply a third party plugin which has been added to your system.</description>
+		<disclaimer lang="en">The author does not host or share any content, nor is heaffiliated with any of the content providers.</disclaimer>
+		<platform>all</platform>
+		<news>Rebrand from Zen to Elysium / Disabled cinemabox</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/01.jpg</screenshot>
+			<screenshot>resources/screenshots/02.jpg</screenshot>
+			<screenshot>resources/screenshots/03.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>
+
 <addon id="plugin.video.exodus" version="2.0.20" name="Exodus" provider-name="Exodus">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
@@ -718,6 +748,30 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
 	</extension>
 </addon>
 
+<addon id="repository.elysium" version="2017.06.10" name="Elysium repository" provider-name="Elysium">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+	</requires>
+	<extension point="xbmc.addon.repository" name="Elysium repository">
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/OpenELEQ/repository.elysium/raw/master/elysium.xml</info>
+			<checksum>https://github.com/OpenELEQ/repository.elysium/raw/master/elysium.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/OpenELEQ/repository.elysium/master/</datadir>
+		</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Elysium repository</summary>
+		<description lang="en">This repository contains Elysium and required dependencies.</description>
+		<disclaimer lang="en">The Author does not host or share any content, nor is he affiliated with any of the content providers.</disclaimer>
+		<platform>all</platform>
+		<news>Rebrand from Zen to Elysium / Disabled Cinemabox</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+	</extension>
+</addon>
+
 <addon id="repository.exodus" version="1.0.0" name="Exodus repository" provider-name="l*m*d*">
 	<extension point="xbmc.addon.repository" name="Exodus repository">
 		<dir>
@@ -875,6 +929,21 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
   <extension library="lib" point="xbmc.python.module" />
 </addon>
 
+<addon id="script.elysium.artwork" version="2017.06.27" name="Elysium Artwork" provider-name="Elysium">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Elysium Addon</summary>
+		<description></description>
+		<platform>all</platform>
+		<news>Added extra theme (thanks Will Martins)</news>
+	</extension>
+</addon>
+
 <addon id="script.exodus.artwork" version="1.0.4" name="Exodus Artwork" provider-name="Exodus">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
@@ -919,37 +988,6 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
     <website></website>
     <email></email>
     <source></source>
-  </extension>
-</addon>
-
-<addon id="script.module.adryan.addon"
-       name="Adryan"
-       version="0.4"
-       provider-name="TVsupertuga">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.t0mm0.common" version="2.0.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" version="3.0.0"/>
-    <import addon="script.module.urlresolver" />
-    <import addon="script.module.simplejson" />
-    <import addon="script.common.plugin.cache" version="2.5.2"/>
-    <import addon="script.module.metahandler" version="2.5.1"/>
-
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>all</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="pt">TVsupertuga</summary>
-    <description lang="pt">TVsupertuga</description>
-    <platform>all</platform>
   </extension>
 </addon>
 
@@ -1032,6 +1070,25 @@ provider-name="Team TVsupertuga">
   </extension>
 </addon>
 
+<addon id="script.module.futures"
+       name="futures"
+       version="2.2.0"
+       provider-name="Brian Quinlan">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>A futures implementation for Python</summary>
+    <description>Backport of the concurrent.futures package from Python 3.2</description>
+    <platform>all</platform>
+    <license>BSD</license>
+    <source>https://code.google.com/p/pythonfutures/source/browse</source>
+    <website>https://code.google.com/p/pythonfutures</website>
+  </extension>
+</addon>
+
 <addon id="script.module.httplib2" name="httplib2" provider-name=" Joe Gregorio" version="0.8.0">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -1098,37 +1155,6 @@ provider-name="Team TVsupertuga">
     <platform>all</platform>
     <summary lang="en">Resolve common live video host URL's to be playable in XBMC/Kodi + find links embeded in sites.</summary>
     <description lang="en"></description>
-  </extension>
-</addon>
-
-<addon id="script.module.livetv.addon"
-       name="Live TV"
-       version="1.4"
-       provider-name="TVsupertuga">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.t0mm0.common" version="2.0.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" version="3.0.0"/>
-    <import addon="script.module.urlresolver" />
-    <import addon="script.module.simplejson" />
-    <import addon="script.common.plugin.cache" version="2.5.2"/>
-    <import addon="script.module.metahandler" version="2.5.1"/>
-
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>all</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="pt">TVsupertuga</summary>
-    <description lang="pt">TVsupertuga</description>
-    <platform>all</platform>
   </extension>
 </addon>
 
@@ -1299,6 +1325,22 @@ provider-name="Team TVsupertuga">
     <description lang="pt">TVsupertuga</description>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="script.module.schism.common" name="SchisM Common Libraries" version="2017.3.30" provider-name="SchisM">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.six" />
+		<import addon="script.module.metahandler" />
+		<import addon="script.module.beautifulsoup" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Collection of modules used by SchisM Addons</summary>
+		<description lang="en">Collection of modules used by SchisM Addons</description>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+	</extension>
 </addon>
 
 <addon id="script.module.simple.downloader" name="Simple Downloader for xbmc plugins" provider-name="TheCollective" version="1.9.5">
@@ -1625,12 +1667,12 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
 	</extension>
 </addon>
 
-<addon id="tvsupertuga.repository" name="[COLOR cyan]TV[/COLOR][COLOR red]supertuga[/COLOR].[COLOR limegreen]Repository[/COLOR]" version="0.0.7" provider-name="TVsupertuga">
+<addon id="tvsupertuga.repository" name="[COLOR cyan]TV[/COLOR][COLOR red]supertuga[/COLOR].[COLOR limegreen]Repository[/COLOR]" version="0.0.8" provider-name="TVsupertuga">
     <extension point="xbmc.addon.repository" name="TVsupertuga Repository">
         <dir>
-            <info compressed="false">https://ftgyhujiko.000webhostapp.com/tvsupertuga.repository/addons.xml</info>
-            <checksum>https://ftgyhujiko.000webhostapp.com/tvsupertuga.repository/addons.xml.md5</checksum>
-            <datadir zip="true">https://ftgyhujiko.000webhostapp.com/tvsupertuga.repository/instal/</datadir>
+            <info compressed="false">http://tvsupertuga.xyz/tvsupertuga.repository/addons.xml</info>
+            <checksum>http://tvsupertuga.xyz/tvsupertuga.repository/addons.xml.md5</checksum>
+            <datadir zip="true">http://tvsupertuga.xyz/tvsupertuga.repository/instal/</datadir>
         </dir>
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/PROJECTOTEAM/base/master/baseaddons.repository/addons.xml</info>
