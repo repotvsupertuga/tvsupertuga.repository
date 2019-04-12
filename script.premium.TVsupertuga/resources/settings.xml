@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+   <category label="Definicoes gerais">
+      <setting label="[B][COLOR green]Dados de conta:[/B][/COLOR]" type="lsep" />
+      <setting id="login_name" type="text" label="Utilizador" default=""/>
+      <setting id="login_password" type="text" label="Senha" default="" option="hidden" enable="!eq(-1,false)"/>
+	  <setting id="login_adultos_sim" type="bool" label="Parental lock?"value="true"/>
+	  <setting id="login_adultos" type="text" label="Senha Adultos" default="12345" option="writeable,hidden"/>
+	  <setting id="email" type="text" default="liveitkodi@gmail.com" enable="false" visible="false"/>
+	   <setting id="password" type="text" default="livekodi" option="hidden" enable="false" visible="false"/>
+	  <setting id="tokenMrpiracy" type="text" option="hidden" visible="false" label="" default="" />
+      <setting id="refreshMrpiracy" type="text" option="hidden" visible="false" label="" default="" />
+	  <setting id="loggedin" type="text" option="hidden" visible="false" label="" default="" />
+   </category>
+   <category label="Vistas">
+      <setting id="menuView" type="enum" label="Vista de Menu" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+	  <setting id="canaisView" type="enum" label="Vista de Grupos" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+	  <setting id="canaisView2" type="enum" label="Vista de Canais" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+	  <setting id="filmesSeriesView" type="enum" label="Vista de Filmes e Séries" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+      <setting id="temporadasView" type="enum" label="Vista de temporadas" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+      <setting id="episodiosView" type="enum" label="Vista de episodios" values="Lista|Lista Grande|Miniatura|Fanart|Media Info 1|Media Info 2|Media Info 3|KODI 17.1" default="7"/>
+    </category>
+	<category label="Download">
+    	<setting label="Pasta para download:" type="lsep" />
+    	<setting label="" type="folder" id="pastaDownloads" source="auto" option="writeable" default="Escolha a pasta para Download" enable="!eq(-2,false)"/>
+    </category>
+</settings>

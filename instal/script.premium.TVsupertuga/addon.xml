@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.premium.TVsupertuga" name="TVsupertuga Premium" provider-name="Team TVsupertuga" version="0.1">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.urlresolver" version="1.0.0"/>
+	<import addon="script.module.beautifulsoup4" version="4.3.2"/>
+	<import addon="script.module.t0mm0.common" version="1.0.0"/>
+	<import addon="plugin.video.youtube" optional="true" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="defaut.py">
+    <provides>all</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">TVsupertuga Premium</summary>
+    <description lang="en">Addon para uso exclusivo de clientes TVsupertuga Premium. É proibida a sua Copia. </description>
+	<language>pt</language>
+    <platform>all</platform>
+    <license>TVsupertuga Premium 2.0</license>
+	<assets>
+		   <icon>resources/img/v2/icon.png</icon>
+		   <fanart>resources/img/v2/fundo.png</fanart>
+   </assets>
+  </extension>
+</addon>

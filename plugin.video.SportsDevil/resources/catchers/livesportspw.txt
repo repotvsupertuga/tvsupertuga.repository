@@ -21,7 +21,7 @@ item_info_build=%s
 
 item_info_name=hls_url_
 item_info_from=pUrl
-item_info_convert=getInfo('%s','.*player.*?(?:file|source):\s*['"](http://edge\d+.*?)["']','@pUrl@')
+item_info_convert=getInfo('%s','.*player.*?(?:file|source|videoUrl)\s*[:=]\s*['"](http://.*?edge\d+.*?)["']','@pUrl@')
 #item_info_convert=replaceRegex('%s','http://edge\d+','')
 #item_info_convert=debug
 item_info_build=%s
