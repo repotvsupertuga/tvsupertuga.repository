@@ -1947,7 +1947,7 @@ provider-name="Team TVsupertuga">
 
 <addon id="script.module.live.sports.addon"
        name="Live Sports"
-       version="1.0"
+       version="2.1"
        provider-name="TVsupertuga">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
