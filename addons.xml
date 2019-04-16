@@ -971,7 +971,7 @@ Nota Importante: Aconselhado a ultima versao do youtube 5.20.0.6.</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.TVsupertuga" version="1.1.0" name="[COLOR cyan]TV[/COLOR]-[COLOR red]supertuga[/COLOR]" provider-name="TVsupertuga">
+<addon id="plugin.video.TVsupertuga" version="1.2.0" name="[COLOR cyan]TV[/COLOR]-[COLOR red]supertuga[/COLOR]" provider-name="TVsupertuga">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="tvsupertuga.repository" version="0.0.6"/>
