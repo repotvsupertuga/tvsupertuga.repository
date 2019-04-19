@@ -2691,7 +2691,7 @@ This is a Non-profit resource, organized solely for educational purposes which i
 
 <addon id="script.module.vod.tvsupertuga.addon"
        name="VOD TVsupertuga"
-       version="1.0"
+       version="2.0"
        provider-name="TVsupertuga">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
