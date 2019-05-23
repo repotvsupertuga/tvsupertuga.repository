@@ -2535,7 +2535,7 @@ This is a Non-profit resource, organized solely for educational purposes which i
 
 <addon id="script.module.submundo.addon"
        name="[COLOR red][B]TV[/B][/COLOR] [COLOR white][B]Sub[/B][/COLOR][COLOR red][B]Mundo[/B][/COLOR]"
-       version="0.7"
+       version="0.8"
        provider-name="TeAm TVsupertuga">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -2763,7 +2763,7 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
 
 <addon id="script.module.world.iptv.addon"
        name="World iptv"
-       version="2.0"
+       version="2.1"
        provider-name="TeAm TVsupertuga">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
