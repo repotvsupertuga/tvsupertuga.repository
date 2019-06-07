@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.stream.tvsupertuga.addon" version="0.5" name="Stream TVsupertuga" provider-name="Team TVsupertuga">
+<addon id="script.module.stream.tvsupertuga.addon" version="0.6" name="Stream TVsupertuga" provider-name="Team TVsupertuga">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="baseaddons.repository" />	
@@ -26,7 +26,7 @@ This is a Non-profit resource, organized solely for educational purposes which i
 </disclaimer>		
 		<platform>all</platform>
 		<forum>http://forumtvsupertuga.xyz/</forum>
-		<website>https://www.facebook.com/TVsupertuga.PT/</website>
+		<website>https://www.facebook.com/TVsupertuga.pt</website>
 		<assets>
 			<icon>icon.png</icon>
 			<fanart>fanart.jpg</fanart>

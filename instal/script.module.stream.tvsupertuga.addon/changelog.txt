@@ -1,10 +1,8 @@
-
-[B]0.3[/B] 
-- Nova atualização dos moldes de leitura..
-
-[B]0.2[/B]
-- Adicionadas mais fontes..
-
-[B]0.1[/B]
-- Initial Release
-_____________________________________________
+ver 1.2.2
+	- A Few tweaks
+	- Scraper updates
+v1.2.1
+    - Updated Settings
+    - Replaced Alluc	
+v1.2.0
+    - Builder Edition updates

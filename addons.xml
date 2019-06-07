@@ -2478,7 +2478,7 @@ Documentation: https://github.com/tamland/kodi-plugin-routing</description>
   </extension>
 </addon>
 
-<addon id="script.module.stream.tvsupertuga.addon" version="0.5" name="Stream TVsupertuga" provider-name="Team TVsupertuga">
+<addon id="script.module.stream.tvsupertuga.addon" version="0.6" name="Stream TVsupertuga" provider-name="Team TVsupertuga">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="baseaddons.repository" />
@@ -2505,7 +2505,7 @@ This is a Non-profit resource, organized solely for educational purposes which i
 </disclaimer>
 		<platform>all</platform>
 		<forum>http://forumtvsupertuga.xyz/</forum>
-		<website>https://www.facebook.com/TVsupertuga.PT/</website>
+		<website>https://www.facebook.com/TVsupertuga.pt</website>
 		<assets>
 			<icon>icon.png</icon>
 			<fanart>fanart.jpg</fanart>
@@ -2519,7 +2519,7 @@ This is a Non-profit resource, organized solely for educational purposes which i
 	</extension>
 </addon>
 
-<addon id="script.module.streamtvsupertuga" name="Stream TVsupertuga Module" version="0.5" provider-name="Team TVsupertuga">
+<addon id="script.module.streamtvsupertuga" name="Stream TVsupertuga Module" version="0.7" provider-name="Team TVsupertuga">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 	</requires>
@@ -2884,7 +2884,7 @@ SEND E MAIL: tvsupertuga@gmail.com[/B][/COLOR]</description>
   </extension>
 </addon>
 
-<addon id="script.streamtvsupertuga.artwork" version="0.3" name="Stream TVsupertuga Artwork" provider-name="Team TVsupertuga">
+<addon id="script.streamtvsupertuga.artwork" version="0.4" name="Stream TVsupertuga Artwork" provider-name="Team TVsupertuga">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
