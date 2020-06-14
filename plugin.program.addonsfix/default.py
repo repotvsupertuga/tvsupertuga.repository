@@ -19,7 +19,7 @@ PATH = "Project X Wizard"
 
     
 def CATEGORIES():
-    link = OPEN_URL('https://goo.gl/ewkQTx').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://drivetvsupertuga.forumtvsupertuga.xyz/djAuQ').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)

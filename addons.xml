@@ -70,7 +70,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.program.addonsfix" name="[COLOR cyan]TV[/COLOR]-[COLOR red]supertuga[/COLOR] [COLOR White]Addons[/COLOR] [COLOR cyan]FIX[/COLOR]" version="0.2" provider-name="TVsupertuga">
+<addon id="plugin.program.addonsfix" name="[COLOR cyan]TV[/COLOR]-[COLOR red]supertuga[/COLOR] [COLOR White]Addons[/COLOR] [COLOR cyan]FIX[/COLOR]" version="0.3" provider-name="TVsupertuga">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -83,7 +83,7 @@
 		<platform>all</platform>
         <facebookgrupo>https://www.facebook.com/TVsupertuga.PT/</facebookgrupo>
         <email>tvsupertuga@gmail.com</email>
-		<forum>http://forumtvsupertuga.pe.hu/</forum>
+		<forum>https://revolutionforum.net/</forum>
 		<website>https://www.facebook.com/TVsupertuga.PT/</website>
   </extension>
 </addon>
